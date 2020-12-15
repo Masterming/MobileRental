@@ -1,9 +1,9 @@
 # MobileRental
 
-### Beschreibung
-Eine Autovermietungs-Website, die Menschen bedient, die ein Fahrzeug für einen kurzen Zeitraum benötigen.
+### Beschreibung:
+* Eine Autovermietungs-Website, die Menschen bedient, die ein Fahrzeug für einen kurzen Zeitraum benötigen.
 
-### Anforderungen
+### Anforderungen:
 * Android-App für Autoverleih-Verwaltung
 * Autos und Kunden sind angelegbar, modifizierbar und löschbar
 * Autos und Kunden sind persistent gespeichert
@@ -11,6 +11,6 @@ Eine Autovermietungs-Website, die Menschen bedient, die ein Fahrzeug für einen 
 * Dokumentation von Rückgaben, Tagen, Auto- und Kunden-Id
 * Anzeige der Daten für Verwaltung
 
-### Umgebung
+### Umgebung:
 * Entwicklung in Android-Studio
 * Content-Provider mit SQLite
