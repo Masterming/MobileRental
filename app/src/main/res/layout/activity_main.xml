@@ -6,13 +6,52 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="202dp"
+        tools:layout_editor_absoluteY="161dp">
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="289dp"
+            android:layout_height="38dp"
+            android:text="Autoauswahl"
+            tools:layout_editor_absoluteX="61dp"
+            tools:layout_editor_absoluteY="244dp" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="289dp"
+            android:layout_height="38dp"
+            android:text="AGB"
+            tools:layout_editor_absoluteX="61dp"
+            tools:layout_editor_absoluteY="293dp" />
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="289dp"
+            android:layout_height="38dp"
+            android:text="FAQ"
+            tools:layout_editor_absoluteX="61dp"
+            tools:layout_editor_absoluteY="346dp" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="412dp"
+            android:layout_height="169dp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="0dp"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="289dp"
+            android:layout_height="38dp"
+            android:text="Suche"
+            tools:layout_editor_absoluteX="61dp"
+            tools:layout_editor_absoluteY="192dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
