@@ -11,13 +11,13 @@ public class DBOpenHelper extends SQLiteOpenHelper {
     private final Context mContext;
 
     // tables and columns
-    public final String TABLE_CARS = "cars";
-    public final String TABLE_RENTAL = "rental";
-    public final String TABLE_CUSTOMERS = "customers";
+    public static final String TABLE_CARS = "cars";
+    public static final String TABLE_RENTAL = "rental";
+    public static final String TABLE_CUSTOMERS = "customers";
 
-    public final String[] CARS_COLUMNS = { "id", "model", "brand", "fuelType", "performance", "type", "seats", "doors", "price" };
-    public final String[] RENTAL_COLUMNS = { "id", "startDate", "endDate", "carID", "customerID" };
-    public final String[] CUSTOMERS_COLUMNS = { "id", "firstName", "lastName", "address" };
+    public static final String[] CARS_COLUMNS = { "id", "model", "brand", "fuelType", "performance", "type", "seats", "doors", "price" };
+    public static final String[] RENTAL_COLUMNS = { "id", "startDate", "endDate", "carID", "customerID" };
+    public static final String[] CUSTOMERS_COLUMNS = { "id", "firstName", "lastName", "address" };
 
     public DBOpenHelper(@Nullable Context context, @Nullable String name) {
         super(context, name, null, 1);
@@ -26,8 +26,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // TODO: save database.sql to resources
-        String file = "database.sql";
+        String file = "raw/database.sql";
         AssetManager am = mContext.getAssets();
 
         try {
@@ -36,8 +35,9 @@ public class DBOpenHelper extends SQLiteOpenHelper {
             String line;
 
             // TODO: test script execution
-            while ((line = reader.readLine()) != null)
+            while (reader.ready())
             {
+                line = reader.readLine();
                 db.execSQL(line);
                 System.out.println(line);
             }

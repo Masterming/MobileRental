@@ -28,10 +28,6 @@ public class Rental {
         return false; // not yet implemented
     }
 
-    public static boolean adminPwCheck(String pass) {
-        return (pass == "admin123");
-    }
-
     private static boolean login(int customerID) {
         activeCustomer = null; // dbConn.getCustomer
         return activeCustomer != null;
@@ -56,6 +52,14 @@ public class Rental {
 
     public static boolean editCar(int carID, int editedPrice) {
         // edit, then write back to db
+        return false; // not yet implemented
+    }
+
+    public static boolean addCustomer(Customer customer) {
+        return false; // not yet implemented
+    }
+
+    public static boolean addCar(Car car) {
         return false; // not yet implemented
     }
 
