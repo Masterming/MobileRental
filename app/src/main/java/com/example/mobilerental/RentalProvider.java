@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 public class RentalProvider extends ContentProvider {
     private SQLiteDatabase db;
 
-    private static final String AUTHORITY = "com.example.mobilerental";
+    public static final String AUTHORITY = "com.example.mobilerental";
 
     private static final UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 

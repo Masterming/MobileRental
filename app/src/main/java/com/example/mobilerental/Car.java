@@ -2,7 +2,6 @@ package com.example.mobilerental;
 
 public class Car {
     private int ID;
-    private boolean booked;
     private String model;
     private String brand;
     private String fuelType;
@@ -11,10 +10,10 @@ public class Car {
     private int doors;
     private int performance;
     private int price;
+    private boolean booked;
 
     public Car(int ID, String model, String brand, String fuelType, String type, int seats, int doors, int performance, int price) {
         this.ID = ID;
-        this.booked = false;
         this.model = model;
         this.brand = brand;
         this.fuelType = fuelType;
@@ -23,14 +22,24 @@ public class Car {
         this.doors = doors;
         this.performance = performance;
         this.price = price;
+        this.booked = false;
+    }
+
+    public Car(String model, String brand, String fuelType, String type, int seats, int doors, int performance, int price) {
+        this.ID = -1;
+        this.model = model;
+        this.brand = brand;
+        this.fuelType = fuelType;
+        this.type = type;
+        this.seats = seats;
+        this.doors = doors;
+        this.performance = performance;
+        this.price = price;
+        this.booked = false;
     }
 
     public int getID() {
         return ID;
-    }
-
-    public boolean isBooked() {
-        return booked;
     }
 
     public String getModel() {
@@ -67,5 +76,14 @@ public class Car {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public boolean isBooked() {
+        return booked;
+    }
+
+    public boolean toggleBooked(){
+        booked = !booked;
+        return booked;
     }
 }

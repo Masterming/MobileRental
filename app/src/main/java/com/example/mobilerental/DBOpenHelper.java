@@ -15,7 +15,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
     public static final String TABLE_RENTAL = "rental";
     public static final String TABLE_CUSTOMERS = "customers";
 
-    public static final String[] CARS_COLUMNS = { "id", "model", "brand", "fuelType", "performance", "type", "seats", "doors", "price" };
+    public static final String[] CARS_COLUMNS = { "id", "model", "brand", "fuelType", "performance", "type", "seats", "doors", "price" , "booked"};
     public static final String[] RENTAL_COLUMNS = { "id", "startDate", "endDate", "carID", "customerID" };
     public static final String[] CUSTOMERS_COLUMNS = { "id", "firstName", "lastName", "address" };
 

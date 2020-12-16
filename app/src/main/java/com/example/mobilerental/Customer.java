@@ -13,6 +13,13 @@ public class Customer {
         this.address = address;
     }
 
+    public Customer(String firstName, String lastName, String address) {
+        ID = -1;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+    }
+
     public int getID() {
         return ID;
     }
