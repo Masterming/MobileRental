@@ -17,6 +17,7 @@ public class RentalProvider extends ContentProvider {
     private static final String AUTHORITY = "com.example.mobilerental";
 
     private static final UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+
     static {
         uriMatcher.addURI(AUTHORITY, helper.TABLE_CARS, 1);
         uriMatcher.addURI(AUTHORITY, helper.TABLE_CUSTOMERS, 2);
@@ -40,24 +41,27 @@ public class RentalProvider extends ContentProvider {
 
         Cursor cursor;
 
-        switch(uriMatcher.match(uri)){
+        switch (uriMatcher.match(uri)) {
             case 1:
-                cursor = db.query(helper.TABLE_CARS, projection, selection, selectionArgs,null, null, sortOrder);
+                cursor = db.query(helper.TABLE_CARS, projection, selection, selectionArgs, null, null, sortOrder);
                 break;
             case 2:
-                cursor = db.query(helper.TABLE_CUSTOMERS, projection, selection, selectionArgs,null, null, sortOrder);
+                cursor = db.query(helper.TABLE_CUSTOMERS, projection, selection, selectionArgs, null, null, sortOrder);
                 break;
             case 3:
-                cursor = db.query(helper.TABLE_RENTAL, projection, selection, selectionArgs,null, null, sortOrder);
+                cursor = db.query(helper.TABLE_RENTAL, projection, selection, selectionArgs, null, null, sortOrder);
                 break;
             case 11:
-                cursor = db.query(helper.TABLE_CARS, projection, selection, selectionArgs,null, "id = " + uri.getFragment(), sortOrder);
+                cursor = db.query(helper.TABLE_CARS, projection, selection, selectionArgs, null,
+                        "id = " + uri.getFragment(), sortOrder);
                 break;
             case 12:
-                cursor = db.query(helper.TABLE_CUSTOMERS, projection, selection, selectionArgs,null, "id = " + uri.getFragment(), sortOrder);
+                cursor = db.query(helper.TABLE_CUSTOMERS, projection, selection, selectionArgs, null,
+                        "id = " + uri.getFragment(), sortOrder);
                 break;
             case 13:
-                cursor = db.query(helper.TABLE_RENTAL, projection, selection, selectionArgs,null, "id = " + uri.getFragment(), sortOrder);
+                cursor = db.query(helper.TABLE_RENTAL, projection, selection, selectionArgs, null,
+                        "id = " + uri.getFragment(), sortOrder);
                 break;
             default:
                 return null;

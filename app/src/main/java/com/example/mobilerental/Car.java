@@ -2,7 +2,7 @@ package com.example.mobilerental;
 
 public class Car {
     private int ID;
-    private boolean booked = false;
+    private boolean booked;
     private String model;
     private String brand;
     private String fuelType;
