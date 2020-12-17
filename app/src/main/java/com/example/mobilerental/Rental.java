@@ -1,6 +1,7 @@
 package com.example.mobilerental;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
@@ -14,12 +15,17 @@ import java.util.List;
 public class Rental {
     private static Customer activeCustomer;
     private static final List<Car> cars = new ArrayList<>();
-    private static final RentalProvider provider = new RentalProvider();
+    private static RentalProvider provider;
     private static int rentalID = -1;
     private static int carID = -1;
     private static int customerID = -1;
 
-    private Rental(int customerID) {} // cannot be instantiated
+    private Rental() {} // cannot be instantiated
+
+    public static void init(Context context){
+        if(provider == null)
+            provider = new RentalProvider(context);
+    }
 
     // looks up available cars in db
     public static List<Car> lookup() {

@@ -4,6 +4,8 @@ import androidx.annotation.Nullable;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.database.sqlite.*;
+import android.util.Log;
+
 import java.io.*;
 
 public class DBOpenHelper extends SQLiteOpenHelper {
@@ -26,7 +28,8 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String file = "raw/database.sql";
+        Log.d("DBOpenHelper", "execute onCreate()");
+        String file = "database.sql";
         assert mContext != null;
         AssetManager am = mContext.getAssets();
 
@@ -40,11 +43,13 @@ public class DBOpenHelper extends SQLiteOpenHelper {
             {
                 line = reader.readLine();
                 db.execSQL(line);
-                System.out.println(line);
+                Log.d("DBOpenHelper", line);
             }
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            Log.d("DBOpenHelper: Exception", e.getMessage());
         }
+        //String script = "CREATE TABLE cars (id int NOT NULL PRIMARY KEY, model char(50), brand char(50), fuelType char(50), performance int, type char(50), seats int, doors int, price int, booked int DEFAULT(0));";
+        //db.execSQL(script);
     }
 
     @Override

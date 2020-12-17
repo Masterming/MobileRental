@@ -17,8 +17,8 @@
             </intent-filter>
         </activity>
         <provider
-            android:name="com.example.mobilerental.RentalProvider"
-            android:authorities="com.example.mobilerental.rentalprovider"
+            android:name=".RentalProvider"
+            android:authorities="com.example.mobilerental"
             android:exported="false">
         </provider>
     </application>

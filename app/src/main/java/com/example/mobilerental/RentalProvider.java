@@ -2,20 +2,31 @@ package com.example.mobilerental;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.UriMatcher;
+import android.content.pm.PathPermission;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 public class RentalProvider extends ContentProvider {
     private SQLiteDatabase db;
+    private boolean init = false;
+    private Context context;
 
     public static final String AUTHORITY = "com.example.mobilerental";
 
     private static final UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+
+    public RentalProvider(){}
+
+    public RentalProvider(Context context) {
+        this.context = context;
+    }
 
     static {
         uriMatcher.addURI(AUTHORITY, DBOpenHelper.TABLE_CARS, 1);
@@ -27,18 +38,24 @@ public class RentalProvider extends ContentProvider {
         uriMatcher.addURI(AUTHORITY, DBOpenHelper.TABLE_RENTAL + "/#", 13);
     }
 
+    public void createDB(){
+        if(!init){
+            init = true;
+            DBOpenHelper helper = new DBOpenHelper(context, "database.db");
+            db = helper.getWritableDatabase();
+        }
+    }
+
     @Override
     public boolean onCreate() {
-        DBOpenHelper helper = new DBOpenHelper(getContext(), "database.db");
-        db = helper.getWritableDatabase();
-        return false;
+        return true;
     }
 
     @Nullable
     @Override
     public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection,
             @Nullable String[] selectionArgs, @Nullable String sortOrder) {
-
+        createDB();
         Cursor cursor;
 
         switch (uriMatcher.match(uri)) {
@@ -69,7 +86,7 @@ public class RentalProvider extends ContentProvider {
                 return null;
         }
 
-        cursor.setNotificationUri(getContext().getContentResolver(), uri);
+        cursor.setNotificationUri(context.getContentResolver(), uri);
 
         return cursor;
     }
@@ -77,7 +94,7 @@ public class RentalProvider extends ContentProvider {
     @Nullable
     @Override
     public String getType(@NonNull Uri uri) {
-
+        createDB();
         String mime = "vnd.android.cursor.";
 
         switch (uriMatcher.match(uri)) {
@@ -108,6 +125,7 @@ public class RentalProvider extends ContentProvider {
     @Nullable
     @Override
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
+        createDB();
         if (values == null)
             return null;
         long i;
@@ -129,7 +147,7 @@ public class RentalProvider extends ContentProvider {
                 return null;
         }
         if (i > 0) {
-            getContext().getContentResolver().notifyChange(ret_uri, null);
+            context.getContentResolver().notifyChange(ret_uri, null);
             return ret_uri;
         } else {
             return null;
@@ -138,7 +156,7 @@ public class RentalProvider extends ContentProvider {
 
     @Override
     public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
-
+        createDB();
         int i;
 
         switch (uriMatcher.match(uri)) {
@@ -163,14 +181,14 @@ public class RentalProvider extends ContentProvider {
             default:
                 return 0;
         }
-        getContext().getContentResolver().notifyChange(uri, null);
+        context.getContentResolver().notifyChange(uri, null);
         return i;
     }
 
     @Override
     public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection,
             @Nullable String[] selectionArgs) {
-
+        createDB();
         int i;
 
         switch (uriMatcher.match(uri)) {
@@ -195,7 +213,7 @@ public class RentalProvider extends ContentProvider {
             default:
                 return 0;
         }
-        getContext().getContentResolver().notifyChange(uri, null);
+        context.getContentResolver().notifyChange(uri, null);
         return i;
     }
 }
