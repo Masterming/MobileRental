@@ -10,33 +10,9 @@
         android:name="com.example.mobilerental.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.example.mobilerental.ui.login.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
-    <fragment
-        android:id="@+id/scrollingFragment"
-        android:name="com.example.mobilerental.ScrollingFragment"
-        android:label="fragment_carselect"
-        tools:layout="@layout/fragment_carselect" />
-    <fragment
-        android:id="@+id/blankFragment"
-        android:name="com.example.mobilerental.BlankFragment"
-        android:label="car_selection"
-        tools:layout="@layout/car_selection" />
-    <fragment
-        android:id="@+id/fullscreenFragment"
-        android:name="com.example.mobilerental.FullscreenFragment"
-        android:label="fragment_fullscreen_searchbar"
-        tools:layout="@layout/fragment_fullscreen_searchbar" />
-    <fragment
-        android:id="@+id/itemFragment"
-        android:name="com.example.mobilerental.ItemFragment"
-        android:label="fragment_item_list"
-        tools:layout="@layout/fragment_item_list" >
-        <action
-            android:id="@+id/action_itemFragment_to_fullscreenFragment"
-            app:destination="@id/fullscreenFragment" />
-    </fragment>
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.example.mobilerental.ui.login.LoginActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
 </navigation>
