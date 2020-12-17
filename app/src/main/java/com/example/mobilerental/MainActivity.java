@@ -2,6 +2,10 @@ package com.example.mobilerental;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.view.View;
+import android.widget.Button;
+
 import android.content.ContentValues;
 import android.content.res.AssetManager;
 import android.net.Uri;
@@ -13,6 +17,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
+
+import com.example.mobilerental.ui.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,5 +36,14 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < cars.size(); i++) {
             Log.e("Test", cars.get(i).toString());
         }
+
+        Button login = findViewById(R.id.button7);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(i);
+            }
+        });
     }
 }
