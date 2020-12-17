@@ -19,20 +19,31 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorPrimary"
+            app:contentScrim="?attr/colorSecondary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
-                android:layout_width="match_parent"
+                android:layout_width="434dp"
                 android:layout_height="?attr/actionBarSize"
+                android:background="#FF9800"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/Theme.MobileRental.PopupOverlay" />
+                app:popupTheme="@style/Theme.MobileRental.PopupOverlay"
+
+                />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
     <include layout="@layout/content_scrolling" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="181dp"
+        app:layout_anchor="@+id/app_bar"
+        app:layout_anchorGravity="center"
+        app:srcCompat="@drawable/mobile_de" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
