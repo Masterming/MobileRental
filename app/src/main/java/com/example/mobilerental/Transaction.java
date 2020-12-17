@@ -1,13 +1,12 @@
 package com.example.mobilerental;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Transaction {
     private int customerID;
     private int carID;
     private LocalDate startDate;
-    private int duration; //duration in full days
+    private int duration; // amount of started days
 
     public Transaction(int customerID, int carID, LocalDate startDate, int duration) {
         this.customerID = customerID;

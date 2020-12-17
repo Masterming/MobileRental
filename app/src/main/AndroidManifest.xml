@@ -19,7 +19,7 @@
         <provider
             android:name="com.example.mobilerental.RentalProvider"
             android:authorities="com.example.mobilerental.rentalprovider"
-            android:exported="true">
+            android:exported="false">
         </provider>
     </application>
 

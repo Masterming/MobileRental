@@ -36,7 +36,8 @@ public class RentalProvider extends ContentProvider {
 
     @Nullable
     @Override
-    public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection, @Nullable String[] selectionArgs, @Nullable String sortOrder) {
+    public Cursor query(@NonNull Uri uri, @Nullable String[] projection, @Nullable String selection,
+            @Nullable String[] selectionArgs, @Nullable String sortOrder) {
 
         Cursor cursor;
 
@@ -45,10 +46,12 @@ public class RentalProvider extends ContentProvider {
                 cursor = db.query(DBOpenHelper.TABLE_CARS, projection, selection, selectionArgs, null, null, sortOrder);
                 break;
             case 2:
-                cursor = db.query(DBOpenHelper.TABLE_CUSTOMERS, projection, selection, selectionArgs, null, null, sortOrder);
+                cursor = db.query(DBOpenHelper.TABLE_CUSTOMERS, projection, selection, selectionArgs, null, null,
+                        sortOrder);
                 break;
             case 3:
-                cursor = db.query(DBOpenHelper.TABLE_RENTAL, projection, selection, selectionArgs, null, null, sortOrder);
+                cursor = db.query(DBOpenHelper.TABLE_RENTAL, projection, selection, selectionArgs, null, null,
+                        sortOrder);
                 break;
             case 11:
                 cursor = db.query(DBOpenHelper.TABLE_CARS, projection, selection, selectionArgs, null,
@@ -105,14 +108,14 @@ public class RentalProvider extends ContentProvider {
     @Nullable
     @Override
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
-        if(values == null)
+        if (values == null)
             return null;
         long i;
         Uri ret_uri;
         switch (uriMatcher.match(uri)) {
             case 1:
-                 i = db.insert(DBOpenHelper.TABLE_CARS, null, values);
-                 ret_uri = Uri.parse("content://" + AUTHORITY + "/" + DBOpenHelper.TABLE_CARS + "/#" + i);
+                i = db.insert(DBOpenHelper.TABLE_CARS, null, values);
+                ret_uri = Uri.parse("content://" + AUTHORITY + "/" + DBOpenHelper.TABLE_CARS + "/#" + i);
                 break;
             case 2:
                 i = db.insert(DBOpenHelper.TABLE_CUSTOMERS, null, values);
@@ -125,11 +128,10 @@ public class RentalProvider extends ContentProvider {
             default:
                 return null;
         }
-        if(i > 0){
+        if (i > 0) {
             getContext().getContentResolver().notifyChange(ret_uri, null);
             return ret_uri;
-        }
-        else {
+        } else {
             return null;
         }
     }
@@ -141,7 +143,7 @@ public class RentalProvider extends ContentProvider {
 
         switch (uriMatcher.match(uri)) {
             case 1:
-                 i = db.delete(DBOpenHelper.TABLE_CARS, selection, selectionArgs);
+                i = db.delete(DBOpenHelper.TABLE_CARS, selection, selectionArgs);
                 break;
             case 2:
                 i = db.delete(DBOpenHelper.TABLE_CUSTOMERS, selection, selectionArgs);
@@ -166,13 +168,14 @@ public class RentalProvider extends ContentProvider {
     }
 
     @Override
-    public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
+    public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection,
+            @Nullable String[] selectionArgs) {
 
         int i;
 
         switch (uriMatcher.match(uri)) {
             case 1:
-                i = db.update(DBOpenHelper.TABLE_CARS, values,  selection, selectionArgs);
+                i = db.update(DBOpenHelper.TABLE_CARS, values, selection, selectionArgs);
                 break;
             case 2:
                 i = db.update(DBOpenHelper.TABLE_CUSTOMERS, values, selection, selectionArgs);

@@ -13,8 +13,8 @@ import java.util.List;
 
 public class Rental {
     private static Customer activeCustomer;
-    private static List<Car> cars = new ArrayList<Car>();
-    private static RentalProvider provider = new RentalProvider();
+    private static final List<Car> cars = new ArrayList<>();
+    private static final RentalProvider provider = new RentalProvider();
     private static int rentalID = -1;
     private static int carID = -1;
     private static int customerID = -1;
@@ -24,13 +24,16 @@ public class Rental {
     // looks up available cars in db
     public static List<Car> lookup() {
         Cursor cursor = provider.query(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_CARS), null, "booked = 0", null, null);
-
-        while(cursor.moveToNext()){
-            Car c = new Car(cursor.getInt(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5)
-                    , cursor.getInt(6), cursor.getInt(7), cursor.getInt(8), cursor.getInt(9));
-            cars.add(c);
+        if(cursor != null){
+            while (cursor.moveToNext()) {
+                Car c = new Car(cursor.getInt(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5)
+                        , cursor.getInt(6), cursor.getInt(7), cursor.getInt(8), cursor.getInt(9));
+                cars.add(c);
+            }
+            cursor.close();
         }
-
+        else
+            System.out.println("Connection failed");
         return cars;
     }
 
@@ -48,16 +51,19 @@ public class Rental {
         ContentValues cv = new ContentValues(1);
         cv.put("booked", 1);
         int i = provider.update(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_CARS + "/#" + carID), cv, null, null);
-        if(i == 0)
+        if(i == 0){
+            System.out.println("Connection failed");
             return false;
+        }
 
         if(rentalID == -1){
             Cursor cursor = provider.query(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_RENTAL), new String[]{"id"}, null, null, "DESC");
-            if(cursor.getCount() > 0){
-                cursor.moveToFirst();
-                rentalID = cursor.getInt(1);
+            if(cursor != null){
+                if(cursor.moveToFirst())
+                    rentalID = cursor.getInt(1);
+                else rentalID = 0;
+                cursor.close();
             }
-            else rentalID = 0;
         }
 
         cv = new ContentValues(4);
@@ -89,27 +95,37 @@ public class Rental {
 
     private static boolean login(int customerID) {
         Cursor cursor = provider.query(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_CUSTOMERS + "/#" + customerID), null, null, null, null);
-        if(cursor.moveToFirst())
-            activeCustomer = new Customer(cursor.getInt(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
+        if(cursor != null) {
+            if (cursor.moveToFirst())
+                activeCustomer = new Customer(cursor.getInt(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
+            cursor.close();
+        }
+        else
+            System.out.println("Connection failed");
         return activeCustomer != null;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public static List<Transaction> getTransactions() {
-        List<Transaction> retList = new ArrayList<Transaction>();
+        List<Transaction> retList = new ArrayList<>();
         Cursor cursor = provider.query(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_RENTAL), null, null,  null, "DESC");
-        while(cursor.moveToNext()){
-            LocalDate start = LocalDate.parse(cursor.getString(2));
-            LocalDate end = LocalDate.parse(cursor.getString(3));
-            int duration = start.until(end).getDays();
-            retList.add(new Transaction(cursor.getInt(4), cursor.getInt(5), start, duration));
+        if(cursor != null) {
+            while (cursor.moveToNext()) {
+                LocalDate start = LocalDate.parse(cursor.getString(2));
+                LocalDate end = LocalDate.parse(cursor.getString(3));
+                int duration = start.until(end).getDays();
+                retList.add(new Transaction(cursor.getInt(4), cursor.getInt(5), start, duration));
+            }
+            cursor.close();
         }
+        else
+            System.out.println("Connection failed");
         return retList;
     }
 
     public static boolean removeCustomer(int customerID) {
         if(customerID == activeCustomer.getID())
-            return false; //cannot delete loggedin user
+            return false; //cannot delete active user
         int i = provider.delete(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_CUSTOMERS + "/#" + customerID), null, null);
         return i != 0;
     }
@@ -142,11 +158,15 @@ public class Rental {
     public static boolean addCustomer(Customer customer) {
         if(customerID == -1){
             Cursor cursor = provider.query(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_CUSTOMERS), new String[]{"id"}, null, null, "DESC");
-            if(cursor.getCount() > 0){
-                cursor.moveToFirst();
-                customerID = cursor.getInt(1);
+            if (cursor != null) {
+                if(cursor.moveToFirst()){
+                    customerID = cursor.getInt(1);
+                }
+                else customerID = 0;
+                cursor.close();
             }
-            else customerID = 0;
+            else
+                System.out.println("Connection failed");
         }
 
         ContentValues cv = new ContentValues(4);
@@ -161,12 +181,16 @@ public class Rental {
     public static boolean addCar(Car car) {
         if(carID == -1){
             Cursor cursor = provider.query(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_CARS), new String[]{"id"}, null, null, "DESC");
-            if(cursor.getCount() > 0){
-                cursor.moveToFirst();
-                carID = cursor.getInt(1);
+            if(cursor != null) {
+                if (cursor.moveToFirst()) {
+                    carID = cursor.getInt(1);
+                } else carID = 0;
+                cursor.close();
             }
-            else carID = 0;
+            else
+                System.out.println("Connection failed");
         }
+
         ContentValues cv = new ContentValues(9);
         cv.put("id", ++carID);
         cv.put("model", car.getModel());
@@ -183,5 +207,4 @@ public class Rental {
             lookup();
         return uri != null;
     }
-
 }
