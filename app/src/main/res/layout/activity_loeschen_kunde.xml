@@ -4,16 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Bestellung">
+    tools:context=".LoeschenKunde">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/Theme.MobileRental.AppBarOverlay"/>
+        android:theme="@style/Theme.MobileRental.AppBarOverlay">
 
-    <include
-        layout="@layout/content_bestellung"
-        android:layout_width="446dp"
-        android:layout_height="786dp" />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/Theme.MobileRental.PopupOverlay" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <include layout="@layout/content_loeschen_kunde" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

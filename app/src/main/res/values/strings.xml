@@ -112,4 +112,10 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_anlegen_kunde">AnlegenKunde</string>
+    <string name="title_activity_loeschen_kunde">LoeschenKunde</string>
+    <string name="title_activity_aendern_kunde">AendernKunde</string>
+    <string name="title_activity_aendern_auto">AendernAuto</string>
+    <string name="title_activity_anlegen_auto">AnlegenAuto</string>
+    <string name="title_activity_loeschen_auto">LoeschenAuto</string>
 </resources>

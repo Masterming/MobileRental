@@ -36,4 +36,34 @@
         android:name="com.example.mobilerental.Bestellung"
         android:label="activity_bestellung"
         tools:layout="@layout/activity_bestellung" />
+    <activity
+        android:id="@+id/loeschenKunde"
+        android:name="com.example.mobilerental.LoeschenKunde"
+        android:label="activity_loeschen_kunde"
+        tools:layout="@layout/activity_loeschen_kunde" />
+    <activity
+        android:id="@+id/anlegenKunde"
+        android:name="com.example.mobilerental.AnlegenKunde"
+        android:label="activity_anlegen_kunde"
+        tools:layout="@layout/activity_anlegen_kunde" />
+    <activity
+        android:id="@+id/aendernKunde"
+        android:name="com.example.mobilerental.AendernKunde"
+        android:label="activity_aendern_kunde"
+        tools:layout="@layout/activity_aendern_kunde" />
+    <activity
+        android:id="@+id/loeschenAuto"
+        android:name="com.example.mobilerental.LoeschenAuto"
+        android:label="activity_loeschen_auto"
+        tools:layout="@layout/activity_loeschen_auto" />
+    <activity
+        android:id="@+id/anlegenAuto"
+        android:name="com.example.mobilerental.AnlegenAuto"
+        android:label="activity_anlegen_auto"
+        tools:layout="@layout/activity_anlegen_auto" />
+    <activity
+        android:id="@+id/aendernAuto"
+        android:name="com.example.mobilerental.AendernAuto"
+        android:label="activity_aendern_auto"
+        tools:layout="@layout/activity_aendern_auto" />
 </navigation>
