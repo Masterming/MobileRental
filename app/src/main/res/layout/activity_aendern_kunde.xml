@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AendernKunde"
- >
+    tools:context=".AendernKunde">
 
     <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="409dp"
-        android:layout_height="192dp"
+        android:id="@+id/imageView"
+        android:layout_width="414dp"
+        android:layout_height="194dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -20,7 +19,7 @@
         android:id="@+id/button8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Submit chnages"
+        android:text="Kundendaten ändern"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,33 +28,39 @@
 
     <EditText
         android:id="@+id/editTextTextPersonName16"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="#FF9800"
+        android:foregroundTint="#FF9800"
+        android:hint="Adresse"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Adresse"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName22" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName22"/>
 
     <EditText
         android:id="@+id/editTextTextPersonName22"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="#FF9800"
+        android:foregroundTint="#FF9800"
+        android:hint="Nachname"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Nachname"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName23" />
 
     <EditText
         android:id="@+id/editTextTextPersonName23"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="#FF9800"
+        android:foregroundTint="#FF9800"
+        android:hint="Vorname"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Vorname"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/space9" />
@@ -66,7 +71,7 @@
         android:layout_height="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Space
         android:id="@+id/space10"

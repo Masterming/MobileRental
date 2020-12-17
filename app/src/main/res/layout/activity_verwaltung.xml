@@ -20,60 +20,72 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Simulation"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9"
-        tools:layout_editor_absoluteX="143dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
 
     <ScrollView
         android:layout_width="405dp"
         android:layout_height="468dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button5"
-        tools:layout_editor_absoluteX="3dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button5">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <EditText
                 android:id="@+id/editTextTextPersonName17"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#FF9800"
                 android:ems="10"
+                android:foregroundTint="#FF9800"
                 android:inputType="textPersonName"
-                android:text="Startdatum" />
+                android:text="Text1" />
 
             <EditText
                 android:id="@+id/editTextTextPersonName18"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#FF9800"
                 android:ems="10"
+                android:foregroundTint="#FF9800"
                 android:inputType="textPersonName"
-                android:text="Enddatum" />
+                android:text="Text2" />
 
             <EditText
                 android:id="@+id/editTextTextPersonName19"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#FF9800"
                 android:ems="10"
+                android:foregroundTint="#FF9800"
                 android:inputType="textPersonName"
-                android:text="Name" />
+                android:text="Text3" />
 
             <EditText
                 android:id="@+id/editTextTextPersonName20"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#FF9800"
                 android:ems="10"
+                android:foregroundTint="#FF9800"
                 android:inputType="textPersonName"
-                android:text="Name" />
+                android:text="Text4" />
 
             <EditText
                 android:id="@+id/editTextTextPersonName21"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#FF9800"
                 android:ems="10"
+                android:foregroundTint="#FF9800"
                 android:inputType="textPersonName"
-                android:text="Name" />
+                android:text="Text5" />
         </LinearLayout>
     </ScrollView>
 
