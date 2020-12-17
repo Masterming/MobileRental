@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileRental">
         <activity
+            android:name=".Bestellung"
+            android:label="@string/title_activity_bestellung"
+            android:theme="@style/Theme.MobileRental.NoActionBar"></activity>
+        <activity
             android:name=".ScrollingActivity"
             android:label="@string/title_activity_scrolling"
-            android:theme="@style/Theme.MobileRental.NoActionBar"></activity>
+            android:theme="@style/Theme.MobileRental.NoActionBar" />
         <activity
             android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login" />

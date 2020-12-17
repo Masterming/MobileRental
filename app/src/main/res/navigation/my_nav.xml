@@ -26,5 +26,14 @@
         android:id="@+id/scrollingActivity"
         android:name="com.example.mobilerental.ScrollingActivity"
         android:label="activity_scrolling"
-        tools:layout="@layout/activity_scrolling" />
+        tools:layout="@layout/activity_scrolling" >
+        <action
+            android:id="@+id/action_scrollingActivity_to_bestellung"
+            app:destination="@id/bestellung" />
+    </activity>
+    <activity
+        android:id="@+id/bestellung"
+        android:name="com.example.mobilerental.Bestellung"
+        android:label="activity_bestellung"
+        tools:layout="@layout/activity_bestellung" />
 </navigation>
