@@ -2,13 +2,8 @@ package com.example.mobilerental;
 
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
-import android.view.View;
 import android.widget.Button;
 
 public class LoeschenAuto extends AppCompatActivity {
@@ -19,10 +14,8 @@ public class LoeschenAuto extends AppCompatActivity {
         setContentView(R.layout.activity_loeschen_auto);
 
         Button del = findViewById(R.id.button);
-        del.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // TODO: code
-            }
+        del.setOnClickListener(v -> {
+            // TODO: code
         });
     }
 }

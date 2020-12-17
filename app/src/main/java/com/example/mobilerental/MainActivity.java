@@ -1,24 +1,15 @@
 package com.example.mobilerental;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.content.Intent;
-import android.view.View;
 import android.widget.Button;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.util.Log;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.List;
 
 import com.example.mobilerental.ui.login.LoginActivity;
-import com.example.mobilerental.ui.login.ScrollingActivity;
+
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,19 +22,15 @@ public class MainActivity extends AppCompatActivity {
 
 
         Button login = findViewById(R.id.button7);
-        login.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(i);
-            }
+        login.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(i);
         });
 
         Button carselect = findViewById(R.id.button6);
-        carselect.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), ScrollingActivity.class);
-                startActivity(i);
-            }
+        carselect.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), ScrollingActivity.class);
+            startActivity(i);
         });
 
         //test();

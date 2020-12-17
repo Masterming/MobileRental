@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileRental">
-        <activity android:name=".Verwaltung"></activity>
+        <activity android:name=".Verwaltung"/>
         <activity
             android:name=".LoeschenAuto"
             android:label="@string/title_activity_loeschen_auto"

@@ -6,13 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".AnlegenAuto" >
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="414dp"
+        android:layout_height="194dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/mobile_de" />
+
     <EditText
         android:id="@+id/editTextTextPersonName5"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="#FF9800"
+        android:foregroundTint="#FF9800"
+        android:hint="Model"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Model"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,28 +33,20 @@
         android:id="@+id/button"
         android:layout_width="130dp"
         android:layout_height="57dp"
-        android:text="Submit"
+        android:text="Auto anlegen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName11" />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="429dp"
-        android:layout_height="167dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/mobile_de" />
-
     <EditText
         android:id="@+id/editTextTextPersonName4"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="#FF9800"
+        android:foregroundTint="#FF9800"
+        android:hint="Sitze"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Sitze"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,11 +54,13 @@
 
     <EditText
         android:id="@+id/editTextTextPersonName6"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="#FF9800"
+        android:foregroundTint="#FF9800"
+        android:hint="Marke"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Marke"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,11 +68,13 @@
 
     <EditText
         android:id="@+id/editTextTextPersonName11"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="#FF9800"
+        android:foregroundTint="#FF9800"
+        android:hint="Preis"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Preis"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,12 +82,13 @@
 
     <EditText
         android:id="@+id/editTextTextPersonName12"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:backgroundTint="#FF9800"
+        android:foregroundTint="#FF9800"
+        android:hint="Türen"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Türen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,11 +96,13 @@
 
     <EditText
         android:id="@+id/editTextTextPersonName14"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="#FF9800"
+        android:foregroundTint="#FF9800"
+        android:hint="Leistung"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Leistung"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -100,11 +110,13 @@
 
     <EditText
         android:id="@+id/editTextTextPersonName15"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="#FF9800"
+        android:foregroundTint="#FF9800"
+        android:hint="Fahrzeugtyp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Fahrzeugtyp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -112,11 +124,13 @@
 
     <EditText
         android:id="@+id/editTextTextPersonName13"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="#FF9800"
+        android:foregroundTint="#FF9800"
+        android:hint="Treibstoff"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Treibstoff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -128,5 +142,5 @@
         android:layout_height="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

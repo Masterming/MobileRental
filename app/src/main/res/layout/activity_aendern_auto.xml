@@ -6,22 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".AendernAuto">
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Submit"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName10"
-        tools:layout_editor_absoluteX="159dp" />
-
     <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="435dp"
-        android:layout_height="191dp"
+        android:id="@+id/imageView"
+        android:layout_width="414dp"
+        android:layout_height="194dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/mobile_de" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Autopreis ändern"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName10" />
 
     <Space
         android:id="@+id/space8"
@@ -29,16 +31,19 @@
         android:layout_height="33dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
         android:id="@+id/editTextTextPersonName10"
-        android:layout_width="308dp"
-        android:layout_height="54dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FF9800"
+        android:foregroundTint="#FF9800"
+        android:hint="Neuen Preis eingeben"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Neuen Preis eingeben"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/space8" />
+        app:layout_constraintTop_toBottomOf="@+id/space8"
+        android:autofillHints="" />
 </androidx.constraintlayout.widget.ConstraintLayout>

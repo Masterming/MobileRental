@@ -1,6 +1,5 @@
 package com.example.mobilerental;
 
-import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -56,11 +55,13 @@ public class Rental {
 
     //gets the customer with ID customerID from the database
     public static Customer getCustomer(int customerID){
-        Cursor cursor = provider.query(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_CUSTOMERS + "/" + Integer.toString(customerID)), null, null, null, null);
+        Cursor cursor = provider.query(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_CUSTOMERS + "/" + customerID), null, null, null, null);
         if(cursor != null){
             if(cursor.moveToNext()) {
                 Log.e("Rental", cursor.getString(1) + " " + cursor.getString(2) + " " + cursor.getString(3));
-                return new Customer(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3));
+                Customer c = new Customer(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3));
+                cursor.close();
+                return c;
             }
         }
         else
