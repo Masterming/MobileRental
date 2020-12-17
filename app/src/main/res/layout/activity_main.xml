@@ -11,10 +11,10 @@
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.0">
 
         <ImageView
             android:id="@+id/imageView3"
@@ -45,14 +45,15 @@
             android:text="Autoauswahl"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button2" />
+            app:layout_constraintTop_toBottomOf="@+id/LogOut" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/simulation"
             android:layout_width="289dp"
             android:layout_height="38dp"
-            android:text="AGB"
+            android:text="Verwaltung"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.516"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button6" />
 
@@ -66,10 +67,10 @@
             app:layout_constraintTop_toBottomOf="@+id/space" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/LogOut"
             android:layout_width="289dp"
             android:layout_height="38dp"
-            android:text="Suche"
+            android:text="Logout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button7" />

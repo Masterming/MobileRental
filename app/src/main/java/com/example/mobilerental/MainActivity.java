@@ -12,6 +12,7 @@ import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -30,11 +31,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        Rental.init(this);Button login = findViewById(R.id.button7);
+        Rental.init(this);
+        Button login = findViewById(R.id.button7);
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(i);
+            }
+        });
+
+        Button carSelec = findViewById(R.id.button6);
+        carSelec.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), ScrollingActivity.class);
                 startActivity(i);
             }
         });

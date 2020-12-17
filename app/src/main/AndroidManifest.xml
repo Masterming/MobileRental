@@ -10,9 +10,33 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileRental">
         <activity
+            android:name=".LoeschenAuto"
+            android:label="@string/title_activity_loeschen_auto"
+            android:theme="@style/Theme.MobileRental.NoActionBar"></activity>
+        <activity
+            android:name=".AnlegenAuto"
+            android:label="@string/title_activity_anlegen_auto"
+            android:theme="@style/Theme.MobileRental.NoActionBar" />
+        <activity
+            android:name=".AendernAuto"
+            android:label="@string/title_activity_aendern_auto"
+            android:theme="@style/Theme.MobileRental.NoActionBar" />
+        <activity
+            android:name=".AendernKunde"
+            android:label="@string/title_activity_aendern_kunde"
+            android:theme="@style/Theme.MobileRental.NoActionBar" />
+        <activity
+            android:name=".LoeschenKunde"
+            android:label="@string/title_activity_loeschen_kunde"
+            android:theme="@style/Theme.MobileRental.NoActionBar" />
+        <activity
+            android:name=".AnlegenKunde"
+            android:label="@string/title_activity_anlegen_kunde"
+            android:theme="@style/Theme.MobileRental.NoActionBar" />
+        <activity
             android:name=".Bestellung"
             android:label="@string/title_activity_bestellung"
-            android:theme="@style/Theme.MobileRental.NoActionBar"></activity>
+            android:theme="@style/Theme.MobileRental.NoActionBar" />
         <activity
             android:name=".ScrollingActivity"
             android:label="@string/title_activity_scrolling"
