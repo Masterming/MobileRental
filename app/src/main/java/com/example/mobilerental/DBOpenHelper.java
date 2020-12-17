@@ -27,6 +27,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String file = "raw/database.sql";
+        assert mContext != null;
         AssetManager am = mContext.getAssets();
 
         try {
@@ -48,10 +49,5 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-    }
-
-    @Override
-    public SQLiteDatabase getWritableDatabase() {
-        return super.getWritableDatabase();
     }
 }

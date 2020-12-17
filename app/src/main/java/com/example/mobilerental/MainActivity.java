@@ -15,9 +15,9 @@ public class MainActivity extends AppCompatActivity {
         test();
     }
 
-    private void test(){
+    private void test() {
         List<Car> cars = Rental.lookup();
-        for(int i = 0; i < cars.size(); i++){
+        for (int i = 0; i < cars.size(); i++) {
             System.out.println(cars.get(i));
         }
     }
