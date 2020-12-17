@@ -8,7 +8,7 @@ import android.util.Patterns;
 
 import com.example.mobilerental.data.LoginRepository;
 import com.example.mobilerental.data.Result;
-import com.example.mobilerental.data.model.LoggedInUser;
+import com.example.mobilerental.Customer;
 import com.example.mobilerental.R;
 
 public class LoginViewModel extends ViewModel {
@@ -31,10 +31,10 @@ public class LoginViewModel extends ViewModel {
 
     public void login(String username, String password) {
         // can be launched in a separate asynchronous job
-        Result<LoggedInUser> result = loginRepository.login(username, password);
+        Result<Customer> result = loginRepository.login(username, password);
 
         if (result instanceof Result.Success) {
-            LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
+            Customer data = ((Result.Success<Customer>) result).getData();
             loginResult.setValue(new LoginResult(new LoggedInUserView(data.getDisplayName())));
         } else {
             loginResult.setValue(new LoginResult(R.string.login_failed));
