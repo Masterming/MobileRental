@@ -1,6 +1,7 @@
 package com.example.mobilerental.data;
 
-import com.example.mobilerental.data.model.LoggedInUser;
+import com.example.mobilerental.Customer;
+import com.example.mobilerental.Rental;
 
 import java.io.IOException;
 
@@ -9,21 +10,19 @@ import java.io.IOException;
  */
 public class LoginDataSource {
 
-    public Result<LoggedInUser> login(String username, String password) {
+    public Result<Customer> login(String username, String password) {
 
         try {
-            // TODO: handle loggedInUser authentication
-            LoggedInUser fakeUser =
-                    new LoggedInUser(
-                            java.util.UUID.randomUUID().toString(),
-                            "Jane Doe");
-            return new Result.Success<>(fakeUser);
+            Customer c = Rental.login(Integer.parseInt(username));
+            if(c == null)
+                throw new Exception("User not found");
+            return new Result.Success<>(c);
         } catch (Exception e) {
             return new Result.Error(new IOException("Error logging in", e));
         }
     }
 
     public void logout() {
-        // TODO: revoke authentication
+        Rental.logout();
     }
 }

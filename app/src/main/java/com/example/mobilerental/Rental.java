@@ -1,10 +1,12 @@
 package com.example.mobilerental;
 
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
+import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
@@ -32,8 +34,8 @@ public class Rental {
         Cursor cursor = provider.query(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_CARS), null, "booked = 0", null, null);
         if(cursor != null){
             while (cursor.moveToNext()) {
-                Car c = new Car(cursor.getInt(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5)
-                        , cursor.getInt(6), cursor.getInt(7), cursor.getInt(8), cursor.getInt(9));
+                Car c = new Car(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4)
+                        , cursor.getInt(5), cursor.getInt(6), cursor.getInt(7), cursor.getInt(8));
                 cars.add(c);
             }
             cursor.close();
@@ -52,11 +54,26 @@ public class Rental {
         return null;
     }
 
+    //gets the customer with ID customerID from the database
+    public static Customer getCustomer(int customerID){
+        Cursor cursor = provider.query(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_CUSTOMERS + "/" + Integer.toString(customerID)), null, null, null, null);
+        if(cursor != null){
+            if(cursor.moveToNext()) {
+                Log.e("Rental", cursor.getString(1) + " " + cursor.getString(2) + " " + cursor.getString(3));
+                return new Customer(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3));
+            }
+        }
+        else
+            Log.e("Rental", "Query failed, Cursor is null");
+        return null;
+    }
+
     // books the car carID for user customerID
     public static boolean bookCar(int customerID, int carID, LocalDate start) {
         ContentValues cv = new ContentValues(1);
         cv.put("booked", 1);
-        int i = provider.update(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_CARS + "/#" + carID), cv, null, null);
+        Uri uri = Uri.fromParts("content", RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_CARS + "/", Integer.toString(carID));
+        int i = provider.update(uri, cv, null, null);
         if(i == 0){
             System.out.println("Connection failed");
             return false;
@@ -66,7 +83,7 @@ public class Rental {
             Cursor cursor = provider.query(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_RENTAL), new String[]{"id"}, null, null, "DESC");
             if(cursor != null){
                 if(cursor.moveToFirst())
-                    rentalID = cursor.getInt(1);
+                    rentalID = cursor.getInt(0);
                 else rentalID = 0;
                 cursor.close();
             }
@@ -77,7 +94,7 @@ public class Rental {
         cv.put("startDate", start.toString());
         cv.put("carID", carID);
         cv.put("customerID", customerID);
-        Uri uri = provider.insert(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_RENTAL), cv);
+        uri = provider.insert(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_RENTAL), cv);
         if(uri != null)
             lookup();
         return uri != null;
@@ -87,7 +104,7 @@ public class Rental {
     public static boolean returnCar(int carID, LocalDate end) {
         ContentValues cv = new ContentValues(1);
         cv.put("booked", 0);
-        int i = provider.update(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_CARS + "/#" + carID), cv, null, null);
+        int i = provider.update(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_CARS + "/" + carID), cv, null, null);
         if(i == 0)
             return false;
 
@@ -99,16 +116,13 @@ public class Rental {
         return i != 0;
     }
 
-    private static boolean login(int customerID) {
-        Cursor cursor = provider.query(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_CUSTOMERS + "/#" + customerID), null, null, null, null);
-        if(cursor != null) {
-            if (cursor.moveToFirst())
-                activeCustomer = new Customer(cursor.getInt(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
-            cursor.close();
-        }
-        else
-            System.out.println("Connection failed");
-        return activeCustomer != null;
+    public static Customer login(int customerID) {
+        activeCustomer = getCustomer(customerID);
+        return activeCustomer;
+    }
+
+    public static void logout(){
+        activeCustomer = null;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -117,10 +131,10 @@ public class Rental {
         Cursor cursor = provider.query(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_RENTAL), null, null,  null, "DESC");
         if(cursor != null) {
             while (cursor.moveToNext()) {
-                LocalDate start = LocalDate.parse(cursor.getString(2));
-                LocalDate end = LocalDate.parse(cursor.getString(3));
+                LocalDate start = LocalDate.parse(cursor.getString(1));
+                LocalDate end = LocalDate.parse(cursor.getString(2));
                 int duration = start.until(end).getDays();
-                retList.add(new Transaction(cursor.getInt(4), cursor.getInt(5), start, duration));
+                retList.add(new Transaction(cursor.getInt(3), cursor.getInt(4), start, duration));
             }
             cursor.close();
         }
@@ -132,12 +146,12 @@ public class Rental {
     public static boolean removeCustomer(int customerID) {
         if(customerID == activeCustomer.getID())
             return false; //cannot delete active user
-        int i = provider.delete(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_CUSTOMERS + "/#" + customerID), null, null);
+        int i = provider.delete(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_CUSTOMERS + "/" + customerID), null, null);
         return i != 0;
     }
 
     public static boolean removeCar(int carID) {
-        int i = provider.delete(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_CARS + "/#" + carID), null, null);
+        int i = provider.delete(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_CARS + "/" + carID), null, null);
         if(i != 0)
             lookup();
         return i != 0;
@@ -148,14 +162,14 @@ public class Rental {
         cv.put("firstName", editedFirstName);
         cv.put("lastName", editedLastName);
         cv.put("address", editedAddress);
-        int i = provider.update(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_CUSTOMERS + "/#" + customerID), cv, null, null);
+        int i = provider.update(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_CUSTOMERS + "/" + customerID), cv, null, null);
         return i != 0;
     }
 
     public static boolean editCar(int carID, int editedPrice) {
         ContentValues cv = new ContentValues(1);
         cv.put("price", editedPrice);
-        int i = provider.update(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_CARS + "/#" + carID), cv, null, null);
+        int i = provider.update(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_CARS + "/" + carID), cv, null, null);
         if(i != 0)
             lookup();
         return i != 0;
@@ -166,7 +180,7 @@ public class Rental {
             Cursor cursor = provider.query(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_CUSTOMERS), new String[]{"id"}, null, null, "DESC");
             if (cursor != null) {
                 if(cursor.moveToFirst()){
-                    customerID = cursor.getInt(1);
+                    customerID = cursor.getInt(0);
                 }
                 else customerID = 0;
                 cursor.close();
@@ -189,7 +203,7 @@ public class Rental {
             Cursor cursor = provider.query(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_CARS), new String[]{"id"}, null, null, "DESC");
             if(cursor != null) {
                 if (cursor.moveToFirst()) {
-                    carID = cursor.getInt(1);
+                    carID = cursor.getInt(0);
                 } else carID = 0;
                 cursor.close();
             }

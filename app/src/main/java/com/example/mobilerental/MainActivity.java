@@ -26,18 +26,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        test();
-    }
 
-    private void test() {
-        Rental.init(this);
-        List<Car> cars = Rental.lookup();
-        Log.e("Test", "executing test()");
-        for (int i = 0; i < cars.size(); i++) {
-            Log.e("Test", cars.get(i).toString());
-        }
-
-        Button login = findViewById(R.id.button7);
+        Rental.init(this);Button login = findViewById(R.id.button7);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,5 +35,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        //test();
+    }
+
+    private void test() {
+        /*List<Car> cars = Rental.lookup();
+        Log.e("Test", "executing test()");
+        for (int i = 0; i < cars.size(); i++) {
+            Log.e("Test", cars.get(i).toString());
+        }
+
+        */
+        Rental.login(3);
     }
 }

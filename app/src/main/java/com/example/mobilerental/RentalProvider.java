@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Build;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -57,32 +58,39 @@ public class RentalProvider extends ContentProvider {
             @Nullable String[] selectionArgs, @Nullable String sortOrder) {
         createDB();
         Cursor cursor;
-
+        Log.e("RentalProvider", Uri.decode(uri.toString()));
         switch (uriMatcher.match(uri)) {
             case 1:
                 cursor = db.query(DBOpenHelper.TABLE_CARS, projection, selection, selectionArgs, null, null, sortOrder);
+                Log.e("RentalProvider", "case 1");
                 break;
             case 2:
                 cursor = db.query(DBOpenHelper.TABLE_CUSTOMERS, projection, selection, selectionArgs, null, null,
                         sortOrder);
+                Log.e("RentalProvider", "case 2");
                 break;
             case 3:
                 cursor = db.query(DBOpenHelper.TABLE_RENTAL, projection, selection, selectionArgs, null, null,
                         sortOrder);
+                Log.e("RentalProvider", "case 3");
                 break;
             case 11:
-                cursor = db.query(DBOpenHelper.TABLE_CARS, projection, selection, selectionArgs, null,
-                        "id = " + uri.getFragment(), sortOrder);
+                cursor = db.query(DBOpenHelper.TABLE_CARS, projection, "id = " + uri.getPathSegments().get(1), selectionArgs, null,
+                        null, sortOrder);
+                Log.e("RentalProvider", "case 11");
                 break;
             case 12:
-                cursor = db.query(DBOpenHelper.TABLE_CUSTOMERS, projection, selection, selectionArgs, null,
-                        "id = " + uri.getFragment(), sortOrder);
+                cursor = db.query(DBOpenHelper.TABLE_CUSTOMERS, projection, "id = " + uri.getPathSegments().get(1), selectionArgs, null,
+                        null, sortOrder);
+                Log.e("RentalProvider", "case 12");
                 break;
             case 13:
-                cursor = db.query(DBOpenHelper.TABLE_RENTAL, projection, selection, selectionArgs, null,
-                        "id = " + uri.getFragment(), sortOrder);
+                cursor = db.query(DBOpenHelper.TABLE_RENTAL, projection, "id = " + uri.getPathSegments().get(1), selectionArgs, null,
+                        null, sortOrder);
+                Log.e("RentalProvider", "case 13");
                 break;
             default:
+                Log.e("RentalProvider", "case DEFAULT");
                 return null;
         }
 
@@ -170,13 +178,13 @@ public class RentalProvider extends ContentProvider {
                 i = db.delete(DBOpenHelper.TABLE_RENTAL, selection, selectionArgs);
                 break;
             case 11:
-                i = db.delete(DBOpenHelper.TABLE_CARS, "id = " + uri.getFragment(), null);
+                i = db.delete(DBOpenHelper.TABLE_CARS, "id = " + uri.getPathSegments().get(1), null);
                 break;
             case 12:
-                i = db.delete(DBOpenHelper.TABLE_CUSTOMERS, "id = " + uri.getFragment(), null);
+                i = db.delete(DBOpenHelper.TABLE_CUSTOMERS, "id = " + uri.getPathSegments().get(1), null);
                 break;
             case 13:
-                i = db.delete(DBOpenHelper.TABLE_RENTAL, "id = " + uri.getFragment(), null);
+                i = db.delete(DBOpenHelper.TABLE_RENTAL, "id = " + uri.getPathSegments().get(1), null);
                 break;
             default:
                 return 0;
@@ -202,13 +210,13 @@ public class RentalProvider extends ContentProvider {
                 i = db.update(DBOpenHelper.TABLE_RENTAL, values, selection, selectionArgs);
                 break;
             case 11:
-                i = db.update(DBOpenHelper.TABLE_CARS, values, "id = " + uri.getFragment(), null);
+                i = db.update(DBOpenHelper.TABLE_CARS, values, "id = " + uri.getPathSegments().get(1), null);
                 break;
             case 12:
-                i = db.update(DBOpenHelper.TABLE_CUSTOMERS, values, "id = " + uri.getFragment(), null);
+                i = db.update(DBOpenHelper.TABLE_CUSTOMERS, values, "id = " + uri.getPathSegments().get(1), null);
                 break;
             case 13:
-                i = db.update(DBOpenHelper.TABLE_RENTAL, values, "id = " + uri.getFragment(), null);
+                i = db.update(DBOpenHelper.TABLE_RENTAL, values, "id = " + uri.getPathSegments().get(1), null);
                 break;
             default:
                 return 0;
