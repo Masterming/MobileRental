@@ -9,7 +9,7 @@
     <color name="white">#FF5722</color>
     <color name="light_blue_600">#FF9800</color>
     <color name="light_blue_900">#FF5722</color>
-    <color name="light_blue_A200">#000000</color>
+    <color name="light_blue_A200">#FF9800</color>
     <color name="light_blue_A400">#FF5722</color>
     <color name="black_overlay">#FF9800</color>
 </resources>
