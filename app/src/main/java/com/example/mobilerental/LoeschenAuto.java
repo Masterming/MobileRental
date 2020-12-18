@@ -4,7 +4,10 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class LoeschenAuto extends AppCompatActivity {
 
@@ -15,7 +18,20 @@ public class LoeschenAuto extends AppCompatActivity {
 
         Button del = findViewById(R.id.button);
         del.setOnClickListener(v -> {
-            // TODO: code
+            boolean bSuccess = false;
+            EditText carID = findViewById(R.id.editTextTextPersonName10);
+            try{
+                bSuccess = Rental.removeCar(Integer.parseInt(carID.toString()));
+            }
+            catch(Exception e){
+                Log.e("removeCar failure", e.getMessage());
+            }
+            if(bSuccess){
+                Toast.makeText(this, "Auto " + carID.toString() + " erfolgreich entfernt!", Toast.LENGTH_LONG).show();
+            }
+            else{
+                Toast.makeText(this, "Auto " + carID.toString() + " konnte nicht entfernt werden.", Toast.LENGTH_LONG).show();
+            }
         });
     }
 }

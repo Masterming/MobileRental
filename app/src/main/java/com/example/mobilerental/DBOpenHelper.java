@@ -38,7 +38,6 @@ public class DBOpenHelper extends SQLiteOpenHelper {
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
             String line;
 
-            // TODO: test script execution
             while (reader.ready())
             {
                 line = reader.readLine();
@@ -48,8 +47,6 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         } catch (IOException e) {
             Log.d("DBOpenHelper: Exception", e.getMessage());
         }
-        //String script = "CREATE TABLE cars (id int NOT NULL PRIMARY KEY, model char(50), brand char(50), fuelType char(50), performance int, type char(50), seats int, doors int, price int, booked int DEFAULT(0));";
-        //db.execSQL(script);
     }
 
     @Override
