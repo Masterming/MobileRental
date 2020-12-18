@@ -39,41 +39,49 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/button1"
+            android:layout_width="289dp"
+            android:layout_height="38dp"
+            android:text="Login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/space"
+            android:backgroundTint="#FF9800"
+            android:foregroundTint="#FF9800" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="289dp"
+            android:layout_height="38dp"
+            android:text="Logout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button1"
+            android:backgroundTint="#FF9800"
+            android:foregroundTint="#FF9800" />
+
+        <Button
+            android:id="@+id/button3"
             android:layout_width="289dp"
             android:layout_height="38dp"
             android:text="Autoauswahl"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/LogOut" />
+            app:layout_constraintTop_toBottomOf="@+id/button2"
+            android:backgroundTint="#FF9800"
+            android:foregroundTint="#FF9800" />
 
         <Button
-            android:id="@+id/simulation"
+            android:id="@+id/button4"
             android:layout_width="289dp"
             android:layout_height="38dp"
             android:text="Verwaltung"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.516"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button6" />
-
-        <Button
-            android:id="@+id/button7"
-            android:layout_width="289dp"
-            android:layout_height="38dp"
-            android:text="Login"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/space" />
-
-        <Button
-            android:id="@+id/LogOut"
-            android:layout_width="289dp"
-            android:layout_height="38dp"
-            android:text="Logout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button7" />
+            app:layout_constraintTop_toBottomOf="@+id/button3"
+            android:backgroundTint="#FF9800"
+            android:foregroundTint="#FF9800" />
 
         <Space
             android:id="@+id/space"

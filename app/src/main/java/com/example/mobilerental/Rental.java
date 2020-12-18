@@ -40,8 +40,26 @@ public class Rental {
             cursor.close();
         }
         else
-            System.out.println("Connection failed");
+            Log.e("SQL", "Connection failed");
         return cars;
+    }
+
+    // looks up booked cars in db
+    public static List<Car> getBookedCars() {
+        Cursor cursor = provider.query(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_CARS), null, "booked = 1", null, null);
+        List<Car> bookedCars = new ArrayList<>();
+        if(cursor != null){
+
+            while (cursor.moveToNext()) {
+                Car c = new Car(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4)
+                        , cursor.getInt(5), cursor.getInt(6), cursor.getInt(7), cursor.getInt(8));
+                bookedCars.add(c);
+            }
+            cursor.close();
+        }
+        else
+            Log.e("SQL", "Connection failed");
+        return bookedCars;
     }
 
     //returns an unbooked car with id carID from cache
@@ -76,7 +94,7 @@ public class Rental {
         Uri uri = Uri.fromParts("content", RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_CARS + "/", Integer.toString(carID));
         int i = provider.update(uri, cv, null, null);
         if(i == 0){
-            System.out.println("Connection failed");
+            Log.e("SQL", "Connection failed");
             return false;
         }
 
@@ -129,18 +147,23 @@ public class Rental {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public static List<Transaction> getTransactions() {
         List<Transaction> retList = new ArrayList<>();
-        Cursor cursor = provider.query(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_RENTAL), null, null,  null, "DESC");
+        Cursor cursor = provider.query(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_RENTAL), null, null,  null, " id DESC");
         if(cursor != null) {
             while (cursor.moveToNext()) {
                 LocalDate start = LocalDate.parse(cursor.getString(1));
-                LocalDate end = LocalDate.parse(cursor.getString(2));
-                int duration = start.until(end).getDays();
-                retList.add(new Transaction(cursor.getInt(3), cursor.getInt(4), start, duration));
+                if(cursor.isNull(2)){
+                    retList.add(new Transaction(cursor.getInt(3), cursor.getInt(4), start, 0));
+                }
+                else{
+                    LocalDate end = LocalDate.parse(cursor.getString(2));
+                    int duration = start.until(end).getDays();
+                    retList.add(new Transaction(cursor.getInt(3), cursor.getInt(4), start, duration));
+                }
             }
             cursor.close();
         }
         else
-            System.out.println("Connection failed");
+            Log.e("SQL", "Connection failed");
         return retList;
     }
 
@@ -187,7 +210,7 @@ public class Rental {
                 cursor.close();
             }
             else
-                System.out.println("Connection failed");
+                Log.e("SQL", "Connection failed");
         }
 
         ContentValues cv = new ContentValues(4);
@@ -209,7 +232,7 @@ public class Rental {
                 cursor.close();
             }
             else
-                System.out.println("Connection failed");
+                Log.e("SQL", "Connection failed");
         }
 
         ContentValues cv = new ContentValues(9);
