@@ -24,7 +24,7 @@ public class Management extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_management);
         linearLayout = findViewById(R.id.linearLayout);
-        // updateView();
+        updateView();
 
         Button simulate = findViewById(R.id.button);
         simulate.setOnClickListener(v -> {

@@ -15,6 +15,7 @@ import java.util.List;
 
 public class Rental {
     private static Customer activeCustomer;
+    public static Car activeCar;
     private static final List<Car> cars = new ArrayList<>();
     private static RentalProvider provider;
     private static int rentalID = -1;
@@ -33,8 +34,8 @@ public class Rental {
         Cursor cursor = provider.query(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_CARS), null, "booked = 0", null, null);
         if(cursor != null){
             while (cursor.moveToNext()) {
-                Car c = new Car(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4)
-                        , cursor.getInt(5), cursor.getInt(6), cursor.getInt(7), cursor.getInt(8));
+                Car c = new Car(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getInt(4)
+                        , cursor.getString(5), cursor.getInt(6), cursor.getInt(7), cursor.getInt(8));
                 cars.add(c);
             }
             cursor.close();
@@ -49,10 +50,9 @@ public class Rental {
         Cursor cursor = provider.query(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_CARS), null, "booked = 1", null, null);
         List<Car> bookedCars = new ArrayList<>();
         if(cursor != null){
-
             while (cursor.moveToNext()) {
-                Car c = new Car(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4)
-                        , cursor.getInt(5), cursor.getInt(6), cursor.getInt(7), cursor.getInt(8));
+                Car c = new Car(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getInt(4)
+                        , cursor.getString(5), cursor.getInt(6), cursor.getInt(7), cursor.getInt(8));
                 bookedCars.add(c);
             }
             cursor.close();
@@ -88,7 +88,7 @@ public class Rental {
     }
 
     // books the car carID for user customerID
-    public static boolean bookCar(int customerID, int carID, LocalDate start) {
+    public static boolean bookCar(LocalDate start) {
         ContentValues cv = new ContentValues(1);
         cv.put("booked", 1);
         Uri uri = Uri.fromParts("content", RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_CARS + "/", Integer.toString(carID));
@@ -111,8 +111,8 @@ public class Rental {
         cv = new ContentValues(4);
         cv.put("id", ++rentalID);
         cv.put("startDate", start.toString());
-        cv.put("carID", carID);
-        cv.put("customerID", customerID);
+        cv.put("carID", activeCar.getID());
+        cv.put("customerID", activeCustomer.getID());
         uri = provider.insert(Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_RENTAL), cv);
         if(uri != null)
             lookup();
