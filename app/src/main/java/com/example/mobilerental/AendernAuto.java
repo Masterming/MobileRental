@@ -4,7 +4,10 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class AendernAuto extends AppCompatActivity {
 
@@ -15,7 +18,26 @@ public class AendernAuto extends AppCompatActivity {
 
         Button edit = findViewById(R.id.button);
         edit.setOnClickListener(v -> {
-            // TODO: code
+            EditText carID = (EditText)findViewById(R.id.editTextTextPersonName10);
+            EditText newPrice = (EditText)findViewById(R.id.editTextTextPersonName7);
+
+            boolean bSuccess = false;
+            Toast toast;
+            try {
+                Log.e("EditText", "carID " + carID.toString() + " newPrice " + newPrice.toString());
+                bSuccess = Rental.editCar(Integer.parseInt(carID.toString()), Integer.parseInt(newPrice.toString()));
+            }
+            catch(Exception e){
+                Log.e("editCar failure", e.getMessage());
+                bSuccess = false;
+            }
+            if(bSuccess){
+                toast = Toast.makeText(this, "Auto " + carID.toString() + " geändert!", Toast.LENGTH_LONG);
+            }
+            else{
+                toast = Toast.makeText(this, "Ändern von Auto " + carID.toString() + " fehlgeschlagen.", Toast.LENGTH_LONG);
+            }
+            toast.show();
         });
     }
 }
