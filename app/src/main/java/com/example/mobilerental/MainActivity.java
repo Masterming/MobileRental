@@ -37,12 +37,41 @@ public class MainActivity extends AppCompatActivity {
             startActivity(i);
         });
 
-        Button management = findViewById(R.id.button4);
+        Button management = findViewById(R.id.button7);
         management.setOnClickListener(v -> {
             Intent i = new Intent(getApplicationContext(), Management.class);
             startActivity(i);
+        }); //new
+        Button autoErstellung = findViewById(R.id.button4);
+        autoErstellung.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), AnlegenAuto.class);
+            startActivity(i);
         });
-
+        Button autoModifizieren = findViewById(R.id.button5);
+        autoModifizieren.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), AendernAuto.class);
+            startActivity(i);
+        });
+        Button autoLoeschung = findViewById(R.id.button6);
+        autoLoeschung.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), LoeschenAuto.class);
+            startActivity(i);
+        });
+        Button kundenErstellung = findViewById(R.id.button8);
+        kundenErstellung.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), AnlegenKunde.class);
+            startActivity(i);
+        });
+        Button kundenModifizieren = findViewById(R.id.button9);
+        kundenModifizieren.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), AendernKunde.class);
+            startActivity(i);
+        });
+        Button kundenLoeschung = findViewById(R.id.button10);
+        kundenLoeschung.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), LoeschenKunde.class);
+            startActivity(i);
+        });
         //test();
     }
 
