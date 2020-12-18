@@ -9,12 +9,80 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        tools:layout_editor_absoluteX="213dp"
+        tools:layout_editor_absoluteY="-196dp">
+
+        <Button
+            android:id="@+id/button10"
+            android:layout_width="289dp"
+            android:layout_height="38dp"
+            android:backgroundTint="#FF9800"
+            android:foregroundTint="#FF9800"
+            android:text="kundenlöschung"
+            app:layout_constraintTop_toBottomOf="@+id/button9"
+            tools:layout_editor_absoluteX="88dp" />
+
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="289dp"
+            android:layout_height="38dp"
+            android:backgroundTint="#FF9800"
+            android:foregroundTint="#FF9800"
+            android:text="Kunden Modifizieren"
+            app:layout_constraintTop_toBottomOf="@+id/button8"
+            tools:layout_editor_absoluteX="85dp" />
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="289dp"
+            android:layout_height="38dp"
+            android:backgroundTint="#FF9800"
+            android:foregroundTint="#FF9800"
+            android:text="Kundenerstellung"
+            app:layout_constraintTop_toBottomOf="@+id/button6"
+            tools:layout_editor_absoluteX="88dp" />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="289dp"
+            android:layout_height="38dp"
+            android:backgroundTint="#FF9800"
+            android:foregroundTint="#FF9800"
+            android:text="Autolöschung"
+            app:layout_constraintTop_toBottomOf="@+id/button5"
+            tools:layout_editor_absoluteX="85dp" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="289dp"
+            android:layout_height="38dp"
+            android:backgroundTint="#FF9800"
+            android:foregroundTint="#FF9800"
+            android:text="auto modifizieren"
+            app:layout_constraintTop_toBottomOf="@+id/button4"
+            tools:layout_editor_absoluteX="87dp" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="289dp"
+            android:layout_height="38dp"
+            android:backgroundTint="#FF9800"
+            android:foregroundTint="#FF9800"
+            android:text="Autoerstellung"
+            app:layout_constraintTop_toBottomOf="@+id/button7"
+            tools:layout_editor_absoluteX="85dp" />
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="289dp"
+            android:layout_height="38dp"
+            android:backgroundTint="#FF9800"
+            android:foregroundTint="#FF9800"
+            android:text="Verwaltung"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button3" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -42,46 +110,33 @@
             android:id="@+id/button1"
             android:layout_width="289dp"
             android:layout_height="38dp"
-            android:text="Login"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/space"
             android:backgroundTint="#FF9800"
-            android:foregroundTint="#FF9800" />
+            android:foregroundTint="#FF9800"
+            android:text="Login"
+            tools:layout_editor_absoluteX="85dp"
+            tools:layout_editor_absoluteY="242dp" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="289dp"
             android:layout_height="38dp"
+            android:backgroundTint="#FF9800"
+            android:foregroundTint="#FF9800"
             android:text="Logout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button1"
-            android:backgroundTint="#FF9800"
-            android:foregroundTint="#FF9800" />
+            app:layout_constraintTop_toBottomOf="@+id/button1" />
 
         <Button
             android:id="@+id/button3"
             android:layout_width="289dp"
             android:layout_height="38dp"
+            android:backgroundTint="#FF9800"
+            android:foregroundTint="#FF9800"
             android:text="Autoauswahl"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button2"
-            android:backgroundTint="#FF9800"
-            android:foregroundTint="#FF9800" />
-
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="289dp"
-            android:layout_height="38dp"
-            android:text="Verwaltung"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.516"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button3"
-            android:backgroundTint="#FF9800"
-            android:foregroundTint="#FF9800" />
+            app:layout_constraintTop_toBottomOf="@+id/button2" />
 
         <Space
             android:id="@+id/space"
