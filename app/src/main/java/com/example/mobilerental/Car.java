@@ -12,28 +12,28 @@ public class Car {
     private int price;
     private boolean booked;
 
-    public Car(int ID, String model, String brand, String fuelType, String type, int seats, int doors, int performance, int price) {
+    public Car(int ID, String model, String brand, String fuelType, int performance, String type, int seats, int doors, int price) {
         this.ID = ID;
         this.model = model;
         this.brand = brand;
         this.fuelType = fuelType;
+        this.performance = performance;
         this.type = type;
         this.seats = seats;
         this.doors = doors;
-        this.performance = performance;
         this.price = price;
         this.booked = false;
     }
 
-    public Car(String model, String brand, String fuelType, String type, int seats, int doors, int performance, int price) {
+    public Car(String model, String brand, String fuelType, int performance, String type, int seats, int doors, int price) {
         this.ID = -1;
         this.model = model;
         this.brand = brand;
         this.fuelType = fuelType;
+        this.performance = performance;
         this.type = type;
         this.seats = seats;
         this.doors = doors;
-        this.performance = performance;
         this.price = price;
         this.booked = false;
     }
@@ -85,5 +85,10 @@ public class Car {
     public boolean toggleBooked(){
         booked = !booked;
         return booked;
+    }
+
+    @Override
+    public String toString() {
+        return model + " " + brand;
     }
 }
