@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.widget.Button;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
+
 import java.util.List;
 
 import com.example.mobilerental.ui.login.LoginActivity;
@@ -29,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
 
         Button logout = findViewById(R.id.button2);
         logout.setOnClickListener(v -> {
-            // TODO: Disable buttons
             Rental.logout();
             carSel.setEnabled(false);
+            Toast.makeText(this, "Ausgeloggt", Toast.LENGTH_LONG).show();
         });
 
         carSel = findViewById(R.id.button3);
