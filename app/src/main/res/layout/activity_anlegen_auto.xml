@@ -21,6 +21,8 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#FF9800"
         android:foregroundTint="#FF9800"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
         android:hint="Model"
         android:ems="10"
         android:inputType="textPersonName"
@@ -36,7 +38,9 @@
         android:text="Auto anlegen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName11" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName11"
+        android:backgroundTint="#FF9800"
+        android:foregroundTint="#FF9800" />
 
     <EditText
         android:id="@+id/editTextTextPersonName4"
@@ -58,6 +62,8 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#FF9800"
         android:foregroundTint="#FF9800"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
         android:hint="Marke"
         android:ems="10"
         android:inputType="textPersonName"

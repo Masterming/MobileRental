@@ -16,7 +16,7 @@
         app:srcCompat="@drawable/mobile_de" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/button"
         android:layout_width="219dp"
         android:layout_height="58dp"
         android:layout_marginTop="8dp"
@@ -25,7 +25,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        android:backgroundTint="#FF9800"
+        android:foregroundTint="#FF9800" />
 
     <TextView
         android:id="@+id/textView4"

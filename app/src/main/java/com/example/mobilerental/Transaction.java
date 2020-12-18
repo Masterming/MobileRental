@@ -30,4 +30,12 @@ public class Transaction {
     public int getDuration() {
         return duration;
     }
+
+    @Override
+    public String toString() {
+        if(duration == 0)
+            return "Auto " + carID + ": " + "Kunde:" + customerID + ", Datum:" + startDate + ", Dauer: /";
+        else
+            return "Auto " + carID + ": " + "Kunde: " + customerID + ", Datum: " + startDate + ", Dauer: " + duration;
+    }
 }
