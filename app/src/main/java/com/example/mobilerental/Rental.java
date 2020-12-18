@@ -251,4 +251,8 @@ public class Rental {
             lookup();
         return uri != null;
     }
+
+    public static boolean getActive() {
+        return activeCustomer != null;
+    }
 }

@@ -12,6 +12,8 @@ import com.example.mobilerental.ui.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    public Button carSel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,9 +31,10 @@ public class MainActivity extends AppCompatActivity {
         logout.setOnClickListener(v -> {
             // TODO: Disable buttons
             Rental.logout();
+            carSel.setEnabled(false);
         });
 
-        Button carSel = findViewById(R.id.button3);
+        carSel = findViewById(R.id.button3);
         carSel.setOnClickListener(v -> {
             Intent i = new Intent(getApplicationContext(), ScrollingActivity.class);
             startActivity(i);
@@ -44,6 +47,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //test();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        carSel.setEnabled(Rental.getActive());
     }
 
     private void test() {
