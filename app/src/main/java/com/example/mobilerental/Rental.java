@@ -91,7 +91,7 @@ public class Rental {
     public static boolean bookCar(LocalDate start) {
         ContentValues cv = new ContentValues(1);
         cv.put("booked", 1);
-        Uri uri = Uri.fromParts("content", RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_CARS + "/", Integer.toString(carID));
+        Uri uri = Uri.parse("content://" + RentalProvider.AUTHORITY + "/" + DBOpenHelper.TABLE_CARS + "/" + Integer.toString(carID));
         int i = provider.update(uri, cv, null, null);
         if(i == 0){
             Log.e("SQL", "Connection failed");

@@ -46,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
         management.setOnClickListener(v -> {
             Intent i = new Intent(getApplicationContext(), Management.class);
             startActivity(i);
-        }); //new
+        });
+
         Button autoErstellung = findViewById(R.id.button4);
         autoErstellung.setOnClickListener(v -> {
             Intent i = new Intent(getApplicationContext(), AnlegenAuto.class);

@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 public class RentalProvider extends ContentProvider {
+
     private SQLiteDatabase db;
     private boolean init = false;
     private Context context;
@@ -140,14 +141,17 @@ public class RentalProvider extends ContentProvider {
             case 1:
                 i = db.insert(DBOpenHelper.TABLE_CARS, null, values);
                 ret_uri = Uri.parse("content://" + AUTHORITY + "/" + DBOpenHelper.TABLE_CARS + "/#" + i);
+                Log.e("RentalProvider", "insert case 1");
                 break;
             case 2:
                 i = db.insert(DBOpenHelper.TABLE_CUSTOMERS, null, values);
                 ret_uri = Uri.parse("content://" + AUTHORITY + "/" + DBOpenHelper.TABLE_CUSTOMERS + "/#" + i);
+                Log.e("RentalProvider", "insert case 2");
                 break;
             case 3:
                 i = db.insert(DBOpenHelper.TABLE_RENTAL, null, values);
                 ret_uri = Uri.parse("content://" + AUTHORITY + "/" + DBOpenHelper.TABLE_RENTAL + "/#" + i);
+                Log.e("RentalProvider", "insert case 3");
                 break;
             default:
                 return null;
@@ -168,21 +172,27 @@ public class RentalProvider extends ContentProvider {
         switch (uriMatcher.match(uri)) {
             case 1:
                 i = db.delete(DBOpenHelper.TABLE_CARS, selection, selectionArgs);
+                Log.e("RentalProvider", "delete case 1");
                 break;
             case 2:
                 i = db.delete(DBOpenHelper.TABLE_CUSTOMERS, selection, selectionArgs);
+                Log.e("RentalProvider", "delete case 2");
                 break;
             case 3:
                 i = db.delete(DBOpenHelper.TABLE_RENTAL, selection, selectionArgs);
+                Log.e("RentalProvider", "delete case 3");
                 break;
             case 11:
                 i = db.delete(DBOpenHelper.TABLE_CARS, "id = " + uri.getPathSegments().get(1), null);
+                Log.e("RentalProvider", "delete case 11");
                 break;
             case 12:
                 i = db.delete(DBOpenHelper.TABLE_CUSTOMERS, "id = " + uri.getPathSegments().get(1), null);
+                Log.e("RentalProvider", "delete case 12");
                 break;
             case 13:
                 i = db.delete(DBOpenHelper.TABLE_RENTAL, "id = " + uri.getPathSegments().get(1), null);
+                Log.e("RentalProvider", "delete case 13");
                 break;
             default:
                 return 0;
@@ -200,21 +210,27 @@ public class RentalProvider extends ContentProvider {
         switch (uriMatcher.match(uri)) {
             case 1:
                 i = db.update(DBOpenHelper.TABLE_CARS, values, selection, selectionArgs);
+                Log.e("RentalProvider", "update case 1");
                 break;
             case 2:
                 i = db.update(DBOpenHelper.TABLE_CUSTOMERS, values, selection, selectionArgs);
+                Log.e("RentalProvider", "update case 2");
                 break;
             case 3:
                 i = db.update(DBOpenHelper.TABLE_RENTAL, values, selection, selectionArgs);
+                Log.e("RentalProvider", "update case 3");
                 break;
             case 11:
                 i = db.update(DBOpenHelper.TABLE_CARS, values, "id = " + uri.getPathSegments().get(1), null);
+                Log.e("RentalProvider", "update case 11");
                 break;
             case 12:
                 i = db.update(DBOpenHelper.TABLE_CUSTOMERS, values, "id = " + uri.getPathSegments().get(1), null);
+                Log.e("RentalProvider", "update case 12");
                 break;
             case 13:
                 i = db.update(DBOpenHelper.TABLE_RENTAL, values, "id = " + uri.getPathSegments().get(1), null);
+                Log.e("RentalProvider", "update case 13");
                 break;
             default:
                 return 0;
