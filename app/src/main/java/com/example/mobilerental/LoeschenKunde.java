@@ -21,16 +21,16 @@ public class LoeschenKunde extends AppCompatActivity {
             boolean bSuccess = false;
             EditText customerID = findViewById(R.id.editTextTextPersonName10);
             try{
-                bSuccess = Rental.removeCustomer(Integer.parseInt(customerID.toString()));
+                bSuccess = Rental.removeCustomer(Integer.parseInt(customerID.getText().toString()));
             }
             catch(Exception e){
-                Log.e("removeCustomer failure", e.getMessage());
+                Log.e("removeCustomer failure", e.getLocalizedMessage());
             }
             if(bSuccess){
-                Toast.makeText(this, "Kunde " + customerID.toString() + " erfolgreich entfernt!", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Kunde " + customerID.getText() + " erfolgreich entfernt!", Toast.LENGTH_LONG).show();
             }
             else{
-                Toast.makeText(this, "Kunde " + customerID.toString() + " konnte nicht entfernt werden.", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Kunde " + customerID.getText() + " konnte nicht entfernt werden.", Toast.LENGTH_LONG).show();
             }
         });
     }

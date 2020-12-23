@@ -21,16 +21,16 @@ public class LoeschenAuto extends AppCompatActivity {
             boolean bSuccess = false;
             EditText carID = findViewById(R.id.editTextTextPersonName10);
             try{
-                bSuccess = Rental.removeCar(Integer.parseInt(carID.toString()));
+                bSuccess = Rental.removeCar(Integer.parseInt(carID.getText().toString()));
             }
             catch(Exception e){
                 Log.e("removeCar failure", e.getMessage());
             }
             if(bSuccess){
-                Toast.makeText(this, "Auto " + carID.toString() + " erfolgreich entfernt!", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Auto " + carID.getText() + " erfolgreich entfernt!", Toast.LENGTH_LONG).show();
             }
             else{
-                Toast.makeText(this, "Auto " + carID.toString() + " konnte nicht entfernt werden.", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Auto " + carID.getText() + " konnte nicht entfernt werden.", Toast.LENGTH_LONG).show();
             }
         });
     }

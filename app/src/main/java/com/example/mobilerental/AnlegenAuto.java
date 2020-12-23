@@ -28,15 +28,15 @@ public class AnlegenAuto extends AppCompatActivity {
             EditText performance = findViewById(R.id.editTextTextPersonName14);
             EditText price = findViewById(R.id.editTextTextPersonName11);
             try {
-                bSuccess = Rental.addCar(new Car(model.toString(), brand.toString(), fuelType.toString(), Integer.parseInt(performance.toString()),
-                        type.toString(), Integer.parseInt(seats.toString()), Integer.parseInt(doors.toString()),  Integer.parseInt(price.toString())));
+                bSuccess = Rental.addCar(new Car(model.getText().toString(), brand.getText().toString(), fuelType.getText().toString(), Integer.parseInt(performance.getText().toString()),
+                        type.getText().toString(), Integer.parseInt(seats.getText().toString()), Integer.parseInt(doors.getText().toString()),  Integer.parseInt(price.getText().toString())));
             }
             catch(Exception e){
                 Log.e("addCar failure", e.getMessage());
                 bSuccess = false;
             }
             if(bSuccess){
-                Toast.makeText(this, brand.toString() + " " + model.toString() + " wurde erfolgreich angelegt!", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, brand.getText() + " " + model.getText() + " wurde erfolgreich angelegt!", Toast.LENGTH_LONG).show();
             }
             else{
                 Toast.makeText(this, "Auto konnte nicht angelegt werden.", Toast.LENGTH_LONG).show();

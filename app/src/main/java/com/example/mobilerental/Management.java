@@ -10,6 +10,7 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -30,6 +31,7 @@ public class Management extends AppCompatActivity {
         simulate.setOnClickListener(v -> {
             simulateDay();
             updateView();
+            Toast.makeText(this, "Simulation läuft", Toast.LENGTH_LONG);
         });
     }
 
@@ -38,7 +40,7 @@ public class Management extends AppCompatActivity {
         List<Car> cars = Rental.getBookedCars();
 
         for(Car c: cars){
-            Log.e("Simulation", "Retrun car" + c.getID());
+            Log.e("Simulation", "Return car" + c.getID());
             if(Math.random() < 0.2){
                 Rental.returnCar(c.getID(), LocalDate.now());
             }

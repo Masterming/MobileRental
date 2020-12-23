@@ -24,18 +24,18 @@ public class AendernAuto extends AppCompatActivity {
             boolean bSuccess = false;
             Toast toast;
             try {
-                Log.e("EditText", "carID " + carID.toString() + " newPrice " + newPrice.toString());
-                bSuccess = Rental.editCar(Integer.parseInt(carID.toString()), Integer.parseInt(newPrice.toString()));
+                Log.e("EditText", "carID " + carID.getText().toString() + " newPrice " + newPrice.getText().toString());
+                bSuccess = Rental.editCar(Integer.parseInt(carID.getText().toString()), Integer.parseInt(newPrice.getText().toString()));
             }
             catch(Exception e){
                 Log.e("editCar failure", e.getMessage());
                 bSuccess = false;
             }
             if(bSuccess){
-                toast = Toast.makeText(this, "Auto " + carID.toString() + " geändert!", Toast.LENGTH_LONG);
+                toast = Toast.makeText(this, "Auto " + carID.getText() + " geändert!", Toast.LENGTH_LONG);
             }
             else{
-                toast = Toast.makeText(this, "Ändern von Auto " + carID.toString() + " fehlgeschlagen.", Toast.LENGTH_LONG);
+                toast = Toast.makeText(this, "Ändern von Auto " + carID.getText() + " fehlgeschlagen.", Toast.LENGTH_LONG);
             }
             toast.show();
         });

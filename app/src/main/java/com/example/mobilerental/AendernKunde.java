@@ -26,18 +26,18 @@ public class AendernKunde extends AppCompatActivity {
             boolean bSuccess = false;
             Toast toast;
             try {
-                Log.e("EditText", "carID " + customerID.toString() + " newFirstname " + newFirstName.toString() + " newLastName " + newLastName.toString() + " newAddress " + newAddress.toString());
-                bSuccess = Rental.editCustomer(Integer.parseInt(customerID.toString()), newFirstName.toString(), newLastName.toString(), newAddress.toString());
+                Log.e("EditText", "carID " + customerID.getText() + " newFirstname " + newFirstName.getText() + " newLastName " + newLastName.getText() + " newAddress " + newAddress.getText());
+                bSuccess = Rental.editCustomer(Integer.parseInt(customerID.getText().toString()), newFirstName.getText().toString(), newLastName.getText().toString(), newAddress.getText().toString());
             }
             catch(Exception e){
                 Log.e("editCustomer failure", e.getMessage());
                 bSuccess = false;
             }
             if(bSuccess){
-                toast = Toast.makeText(this, "Kunde " + customerID.toString() + " geändert!", Toast.LENGTH_LONG);
+                toast = Toast.makeText(this, "Kunde " + customerID.getText() + " geändert!", Toast.LENGTH_LONG);
             }
             else{
-                toast = Toast.makeText(this, "Ändern von Kunde " + customerID.toString() + " fehlgeschlagen.", Toast.LENGTH_LONG);
+                toast = Toast.makeText(this, "Ändern von Kunde " + customerID.getText() + " fehlgeschlagen.", Toast.LENGTH_LONG);
             }
             toast.show();
         });

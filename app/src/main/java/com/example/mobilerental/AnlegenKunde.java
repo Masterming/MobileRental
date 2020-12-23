@@ -24,14 +24,14 @@ public class AnlegenKunde extends AppCompatActivity {
 
             boolean bSuccess = false;
             try{
-                bSuccess = Rental.addCustomer(new Customer(firstName.toString(), lastName.toString(), address.toString()));
+                bSuccess = Rental.addCustomer(new Customer(firstName.getText().toString(), lastName.getText().toString(), address.getText().toString()));
             }
             catch(Exception e){
                 Log.e("addCustomer", e.getMessage());
                 bSuccess = false;
             }
             if(bSuccess){
-                Toast.makeText(this, firstName.toString() + " " + lastName.toString() + " wurde erfolgreich angelegt!", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, firstName.getText().toString() + " " + lastName.getText().toString() + " wurde erfolgreich angelegt!", Toast.LENGTH_LONG).show();
             }
             else{
                 Toast.makeText(this, "Kunde konnte nicht angelegt werden.", Toast.LENGTH_LONG).show();
